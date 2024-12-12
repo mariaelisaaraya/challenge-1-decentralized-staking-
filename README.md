@@ -1,4 +1,4 @@
-# 🚩 Challenge 1: 🔏 Decentralized Staking App Explicado
+# 🚩 Challenge 1: 🔏 Decentralized Staking App Explicado en Español
 
 ![readme-1](https://github.com/scaffold-eth/se-2-challenges/assets/80153681/a620999a-a1ff-462d-9ae3-5b49ab0e023a)
 
