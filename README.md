@@ -2,15 +2,32 @@
 
 ![readme-1](https://github.com/scaffold-eth/se-2-challenges/assets/80153681/a620999a-a1ff-462d-9ae3-5b49ab0e023a)
 
-🦸 A superpower of Ethereum is allowing you, the builder, to create a simple set of rules that an adversarial group of players can use to work together. In this challenge, you create a decentralized application where users can coordinate a group funding effort. If the users cooperate, the money is collected in a second smart contract. If they defect, the worst that can happen is everyone gets their money back. The users only have to trust the code.
+🦸 Resumen del desafío: *Decentralized Staking App* Este desafío consiste en crear una aplicación descentralizada que permita a las personas usuarias enviar fondos a un contrato inteligente, con las siguientes reglas:
+
+- Período de stake:
+
+  - Las personas usuarias pueden enviar ETH al contrato durante un tiempo limitado (definido por un deadline).
+  - El contrato rastrea cuánto ha enviado cada persona usuaria utilizando un mapping.
+
+- Condiciones de éxito:
+  
+  - Si antes del deadline el contrato acumula al menos 1 ETH (threshold), los fondos se envían a otro contrato (ExampleExternalContract) y ejecutan una función llamada complete().
+
+- Fallo del objetivo:
+
+  - Si no se alcanza el threshold antes del deadline, las personas usuarias pueden retirar sus fondos.
+
+- Frontend y experiencia de usuario:
+
+  - El reto incluye construir una interfaz para interactuar con el contrato: mostrar cuánto ETH ha sido staked, cuánto tiempo queda, y permitir stake o retiro.
+
+
 
 🏦 Build a `Staker.sol` contract that collects **ETH** from numerous addresses using a payable `stake()` function and keeps track of `balances`. After some `deadline` if it has at least some `threshold` of ETH, it sends it to an `ExampleExternalContract` and triggers the `complete()` action sending the full balance. If not enough **ETH** is collected, allow users to `withdraw()`.
 
 🎛 Building the frontend to display the information and UI is just as important as writing the contract. The goal is to deploy the contract and the app to allow anyone to stake using your app. Use a `Stake(address,uint256)` event to list all stakes.
 
-🌟 The final deliverable is deploying a Dapp that lets users send ether to a contract and stake if the conditions are met, then `yarn vercel` your app to a public webserver. Submit the url on [SpeedRunEthereum.com](https://speedrunethereum.com)!
-
-> 💬 Meet other builders working on this challenge and get help in the [Challenge 1 Telegram](https://t.me/joinchat/E6r91UFt4oMJlt01)!
+🌟 The final deliverable is deploying a Dapp that lets users send ether to a contract and stake if the conditions are met, then `yarn vercel` your app to a public webserver. 
 
 ---
 
@@ -57,12 +74,6 @@ yarn start
 
 🔏 Now you are ready to edit your smart contract `Staker.sol` in `packages/hardhat/contracts`
 
----
-
-⚗️ At this point you will need to know basic Solidity syntax. If not, you can pick it up quickly by tinkering with concepts from [📑 Solidity By Example](https://solidity-by-example.org/) using [🏗️ Scaffold-ETH-2](https://scaffoldeth.io). (In particular: global units, primitive data types, mappings, sending ether, and payable functions.)
-
----
-
 ## Checkpoint 1: 🔏 Staking 💵
 
 You'll need to track individual `balances` using a mapping:
@@ -79,11 +90,7 @@ uint256 public constant threshold = 1 ether;
 
 > 👩‍💻 Write your `stake()` function and test it with the `Debug Contracts` tab in the frontend.
 
-![debugContracts](https://github.com/scaffold-eth/se-2-challenges/assets/55535804/1a888e31-a79b-49ef-9848-357c5cee445a)
-
 > 💸 Need more funds from the faucet? Click on _"Grab funds from faucet"_, or use the Faucet feature at the bottom left of the page to get as much as you need!
-
-![Faucet](https://github.com/scaffold-eth/se-2-challenges/assets/55535804/e82e3100-20fb-4886-a6bf-4113c3729f53)
 
 > ✏ Need to troubleshoot your code? If you import `hardhat/console.sol` to your contract, you can call `console.log()` right in your Solidity code. The output will appear in your `yarn chain` terminal.
 
