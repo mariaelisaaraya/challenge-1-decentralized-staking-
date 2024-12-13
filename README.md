@@ -22,7 +22,6 @@
   - El reto incluye construir una interfaz para interactuar con el contrato: mostrar cuánto ETH ha sido staked, cuánto tiempo queda, y permitir stake o retiro.
 
 
-
 🏦 Build a `Staker.sol` contract that collects **ETH** from numerous addresses using a payable `stake()` function and keeps track of `balances`. After some `deadline` if it has at least some `threshold` of ETH, it sends it to an `ExampleExternalContract` and triggers the `complete()` action sending the full balance. If not enough **ETH** is collected, allow users to `withdraw()`.
 
 🎛 Building the frontend to display the information and UI is just as important as writing the contract. The goal is to deploy the contract and the app to allow anyone to stake using your app. Use a `Stake(address,uint256)` event to list all stakes.
@@ -38,15 +37,6 @@ Before you begin, you need to install the following tools:
 - [Node (v18 LTS)](https://nodejs.org/en/download/)
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
-
-Then download the challenge to your computer and install dependencies by running:
-
-```sh
-git clone https://github.com/scaffold-eth/se-2-challenges.git challenge-1-decentralized-staking
-cd challenge-1-decentralized-staking
-git checkout challenge-1-decentralized-staking
-yarn install
-```
 
 > in the same terminal, start your local network (a blockchain emulator in your computer):
 
@@ -100,9 +90,33 @@ uint256 public constant threshold = 1 ether;
 - [ ] Is your `balance` correctly tracked?
 - [ ] Do you see the events in the `Stake Events` tab?
 
-  ![allStakings](https://github.com/scaffold-eth/se-2-challenges/assets/55535804/80bcc843-034c-4547-8535-129ed494a204)
-
 ---
+### Checkpoint 1: 🔏 Staking 💵 Explicado en Español
+
+🔏 Ahora estás lista para editar tu contrato inteligente Staker.sol en packages/hardhat/contracts.
+
+- El archivo Staker.sol es el contrato principal que vas a modificar para este desafío. Vas al directorio mencionado (packages/hardhat/contracts) y abre ese archivo. Vas a implementar funciones que permitan a las personas usuarias "apostar" (o stakear) fondos en tu contrato. Esto implica almacenar balances individuales y establecer un umbral de 1 ether para ciertas acciones.
+
+#### Paso 1: Agregar la variable balances
+
+En este caso se debe rastrear los saldos individuales de las personas usuarias usando un mapping:
+
+```solidity
+mapping ( address => uint256 ) public balances;
+```
+
+Un mapping en Solidity es como una tabla que relaciona una dirección (address) con un valor (uint256), en este caso, cada dirección tendrá un saldo asociado. public hace que esta variable sea accesible directamente desde fuera del contrato.
+
+> Tarea: Agregar esta línea dentro de tu contrato Staker.sol, probablemente cerca de otras variables de estado (fuera de las funciones). Quedará algo como
+
+```solidity
+contract Staker {
+    mapping (address => uint256) public balances;
+}
+```
+
+#### Paso 2: Agregar la constante threshold
+
 
 ## Checkpoint 2: 🔬 State Machine / Timing ⏱
 
