@@ -107,7 +107,7 @@ mapping ( address => uint256 ) public balances;
 
 Un mapping en Solidity es como una tabla que relaciona una dirección (address) con un valor (uint256), en este caso, cada dirección tendrá un saldo asociado. public hace que esta variable sea accesible directamente desde fuera del contrato.
 
-> Tarea: Agregar esta línea dentro de tu contrato Staker.sol, probablemente cerca de otras variables de estado (fuera de las funciones). Quedará algo como
+> Tarea: Agregar esta línea dentro de tu contrato Staker.sol. Quedará algo como
 
 ```solidity
 contract Staker {
@@ -117,6 +117,24 @@ contract Staker {
 
 #### Paso 2: Agregar la constante threshold
 
+También vas a necesitar rastrear una constante llamada threshold con un valor de 1 ether:
+
+```solidity
+uint256 public constant threshold = 1 ether;
+```
+
+- uint256: Representa un número entero sin signo.
+- constant: Significa que este valor no puede cambiar una vez definido.
+- 1 ether: Es una unidad predefinida en Solidity que equivale a 10^18 wei (la unidad más pequeña de Ethereum).
+
+> Tarea: Agrega esta línea después del mapping. Ahora tu contrato debería verse como:
+
+```solidity
+contract Staker {
+    mapping (address => uint256) public balances;
+    uint256 public constant threshold = 1 ether;
+}
+```
 
 ## Checkpoint 2: 🔬 State Machine / Timing ⏱
 
