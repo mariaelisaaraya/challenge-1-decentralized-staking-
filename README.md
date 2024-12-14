@@ -93,7 +93,11 @@ uint256 public constant threshold = 1 ether;
 ---
 ### Checkpoint 1: 🔏 Staking 💵 Explicado en Español
 
-🔏 Ahora estás lista para editar tu contrato inteligente Staker.sol en packages/hardhat/contracts.
+Hoy en día en el front vas a poder observas en *staker UI* que no funcionan (esto es lo que debemos programar):
+
+![Staker UI](./assets/speedrun1.PNG)
+
+🔏 Ahora es necesario editar tu contrato inteligente Staker.sol en packages/hardhat/contracts.
 
 - El archivo Staker.sol es el contrato principal que vas a modificar para este desafío. Vas al directorio mencionado (packages/hardhat/contracts) y abre ese archivo. Vas a implementar funciones que permitan a las personas usuarias "apostar" (o stakear) fondos en tu contrato. Esto implica almacenar balances individuales y establecer un umbral de 1 ether para ciertas acciones.
 
@@ -114,7 +118,6 @@ contract Staker {
     mapping (address => uint256) public balances;
 }
 ```
-
 #### Paso 2: Agregar la constante threshold
 
 También vas a necesitar rastrear una constante llamada threshold con un valor de 1 ether:
@@ -135,6 +138,59 @@ contract Staker {
     uint256 public constant threshold = 1 ether;
 }
 ```
+
+#### Paso 3: Implementar la función stake()
+
+ 👩‍💻 Escribe tu función stake() y pruébala en la pestaña Debug Contracts del frontend.
+
+ ¿Qué es la función stake()? Es una función que permite a las personas usuarias enviar Ether al contrato y registrar su saldo. Se debe usar la variable balances para actualizar el saldo del usuario que llamó a la función.
+
+ ```solidity
+function stake() public payable {
+    // Incrementa el saldo del remitente con la cantidad enviada
+    balances[msg.sender] += msg.value;
+}
+```
+
+- *msg.sender*: Es la dirección de la persona usuaria que llama a la función.
+- *msg.value*: Es la cantidad de Ether enviada junto con la llamada a la función.
+- *+=*: Suma el valor enviado al saldo existente.
+
+Prueba inicial: Una vez implementada, hay que ir al frontend y utiliza la pestaña "Debug Contracts" para llamar a stake() enviando un monto (por ejemplo, 0.1 ether).
+
+#### Paso 4: Obtener fondos del Faucet
+
+💸 ¿Necesitas más fondos? Haz clic en "Grab funds from faucet" o utiliza la funcionalidad de Faucet en la esquina superior izquierda para obtener lo que necesites.
+
+- ¿Qué significa? Si te quedas sin Ether en tu billetera de desarrollo, puedes usar el "Faucet" (un grifo) para obtener más Ether falso en la red local de Hardhat.
+
+- Cómo hacerlo: Desde el frontend, busca el botón "Grab funds from faucet" y úsalo para agregar más fondos a tu billetera.
+
+#### Paso 5: Debug con console.log
+
+✏ ¿Necesitas solucionar problemas? Si importas hardhat/console.sol en tu contrato, puedes usar console.log() directamente en tu código Solidity.
+
+- ¿Qué es esto? console.log() te permite imprimir mensajes o valores en la terminal donde ejecutas yarn chain. Útil para verificar valores como msg.sender, msg.value, o balances.
+
+ ```solidity
+import "hardhat/console.sol";
+
+function stake() public payable {
+    balances[msg.sender] += msg.value;
+    console.log("Balance actualizado para:", msg.sender, "Nuevo saldo:", balances[msg.sender]);
+}
+```
+
+> Tarea:Importa console.sol y usa console.log() para depurar.
+
+#### Objetivos Finales
+🥅 Metas a lograr:
+
+- ¿Ves que el balance del contrato Staker aumenta cuando llamas a stake()? Cuando envíes Ether al contrato usando stake(), el saldo total del contrato debe reflejarse en el explorador (frontend).
+
+- ¿Se rastrean correctamente los balances de los usuarios? Cada usuario que llama a stake() debe tener su saldo correctamente almacenado en el mapping balances.
+
+- ¿Ves eventos en la pestaña "Stake Events"? En pasos posteriores, emitirás eventos para registrar cada vez que alguien haga staking.
 
 ## Checkpoint 2: 🔬 State Machine / Timing ⏱
 
