@@ -93,7 +93,7 @@ uint256 public constant threshold = 1 ether;
 ---
 ### Checkpoint 1: 🔏 Staking 💵 Explicado en Español
 
-Hoy en día en el front vas a poder observas en *staker UI* que no funcionan (esto es lo que debemos programar):
+Hoy en día en el front vas a poder observar en *staker UI* botones que no funcionan (esto es lo que debemos programar):
 
 ![Staker UI](./assets/speedrun1.PNG)
 
