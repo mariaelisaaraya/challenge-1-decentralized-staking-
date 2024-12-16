@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;  //Do not change the solidity version as it negatively impacts submission grading
 
-// Importamos Hardhat Console para debugging
-import "hardhat/console.sol";
 import "./ExampleExternalContract.sol";
 
 // El contrato verifica quién hizo una apuesta y de cuánto
@@ -28,10 +26,6 @@ contract Staker {
     exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
     deadline = block.timestamp + 72 hours; // Modificar como dice el reto
     emit DeadlineSet(deadline);
-
-    // Debugging: mostramos el tiempo actual y la deadline
-    console.log("Current Time (block.timestamp):", block.timestamp);
-    console.log("Deadline set to:", deadline);
   }
 
   // Función stake: permite a los usuarios apostar fondos
@@ -40,9 +34,6 @@ contract Staker {
     balances[msg.sender] += msg.value; // Suma al balance del usuario
     emit Stake(msg.sender, msg.value); // Emite el evento
 
-    // Debugging: mostramos la apuesta
-    console.log("Stake received from:", msg.sender);
-    console.log("Amount staked:", msg.value);
   }
 
   // Función execute: permite ejecutar el contrato si se cumple el threshold
@@ -58,10 +49,6 @@ contract Staker {
       // Si no se alcanzó el threshold, se permite el retiro
       openForWithdraw = true;
     }
-
-    // Debugging: mostramos el estado de ejecución
-    console.log("Contract executed:", executed);
-    console.log("Open for withdraw:", openForWithdraw);
   }
 
   // Función withdraw: permite a los usuarios retirar si el threshold no se cumplió
