@@ -26,7 +26,7 @@ contract Staker {
   // Constructor: inicializa el contrato
   constructor(address exampleExternalContractAddress) {
     exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
-    deadline = block.timestamp + 1 minutes; // Extendemos el tiempo para testing
+    deadline = block.timestamp + 72 hours; // Modificar como dice el reto
     emit DeadlineSet(deadline);
 
     // Debugging: mostramos el tiempo actual y la deadline
