@@ -16,17 +16,20 @@ Los pasos que realice:
 
 La primera parte la completo de la siguiente forma:
 
-[1er paso para vertificar contrato](./assets/pasoParaVerificarContrato.PNG)
-[2do paso para vertificar contrato](./assets/pasoParaVerificarContrato2.PNG)
-[3er paso para vertificar contrato](./assets/pasoParaVerificarContrato3.PNG)
+![1er paso para vertificar contrato](/assets/pasoParaVerificarContrato.PNG)
+![2do paso para vertificar contrato](/assets/pasoParaVerificarContrato2.PNG)
+![3er paso para vertificar contrato](/assets/pasoParaVerificarContrato3.PNG)
 
 y me tira error de code byte.
 
-Tambien lo que probe fue de formarlo a plano como vimos en la clase sintaxis pero me sigue tirando el mismo error. 
+Tambien lo que probe fue de formarlo a plano como vimos en la clase sintaxis, en Remix, pero me sigue tirando el mismo error. 
+En Remix tambien tengo el problema que cambio la version de Solidity pero igualmente me sigue tirando el error de encode.
+
+-  --
 
 
-Las pruebas que me da al realizar *yarn test*
+Las pruebas que me da al realizar *yarn test* y el [proyecto deployado](https://challenge-1-decentralized-staking--beige.vercel.app/staker-ui) en donde dice Time Left 2 days, 5 hours, 15 minutes
 
-![Test1](./assets/yarntest1.PNG)
+![Test1](/assets/yarntest1.PNG)
 
-![Test2](./assets/yarntest2.PNG)
+![Test2](/assets/yarntest2.PNG)
